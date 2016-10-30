@@ -152,7 +152,7 @@ extension PageTitleView {
         // 3.3.改变targetLabel
         targetLabel.textColor = UIColor(r: kNormalColor.0 + progress * delta.0, g: kNormalColor.1 + progress * delta.1, b: kNormalColor.2 + progress * delta.2)
         // 4.记录最新的index
-        currentIndex = targetIndex
+        currentIndex = targetIndex  
     }
 }
 
