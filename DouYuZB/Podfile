@@ -7,5 +7,6 @@ use_frameworks!
 target 'DouYuZB' do
 
 pod 'Alamofire', '~>4.0.1'
+pod 'Kingfisher'
 
 end
