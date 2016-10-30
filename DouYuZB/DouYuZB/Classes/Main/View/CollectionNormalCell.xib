@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,6 +63,12 @@
                 <constraint firstItem="ICe-dZ-oK2" firstAttribute="top" secondItem="q63-EI-0K9" secondAttribute="bottom" constant="5" id="zrv-2g-zfX"/>
             </constraints>
             <size key="customSize" width="200" height="132"/>
+            <connections>
+                <outlet property="iconImageView" destination="q63-EI-0K9" id="gbq-d4-oPw"/>
+                <outlet property="nicknameLable" destination="OWw-bL-dfO" id="1Uk-gJ-AbC"/>
+                <outlet property="onlineBtn" destination="HOE-Su-1DY" id="0QC-IY-Lqg"/>
+                <outlet property="roomNameLable" destination="ICe-dZ-oK2" id="IBm-wi-Owd"/>
+            </connections>
             <point key="canvasLocation" x="3" y="15"/>
         </collectionViewCell>
     </objects>
