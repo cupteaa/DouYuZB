@@ -19,7 +19,6 @@
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_header_hot" translatesAutoresizingMaskIntoConstraints="NO" id="wqZ-0a-KE9">
                     <constraints>
-                        <constraint firstAttribute="width" constant="18" id="6R1-3z-Y6x"/>
                         <constraint firstAttribute="height" constant="18" id="UKc-o6-gfn"/>
                     </constraints>
                 </imageView>
@@ -51,6 +50,7 @@
             </constraints>
             <connections>
                 <outlet property="iconImageView" destination="wqZ-0a-KE9" id="WJx-0R-uvF"/>
+                <outlet property="moreBtn" destination="g1X-QF-KQa" id="wJa-hD-RES"/>
                 <outlet property="titleLabel" destination="uPL-l0-hod" id="bWj-1J-fM6"/>
             </connections>
         </collectionReusableView>

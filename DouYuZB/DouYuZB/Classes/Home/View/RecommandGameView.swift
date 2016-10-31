@@ -13,17 +13,9 @@ fileprivate let kEdgeInsetMargin: CGFloat = 10.0
 
 class RecommandGameView: UIView {
     // MARK: 定义数据属性
-    var groups: [AnchorGroup]? {
+    var groups: [BaseGameModel]? {
         didSet {
-            // 移除前两组数据
-            groups?.removeFirst()
-            groups?.removeFirst()
-            // 添加一组"更多"数据
-            let more: AnchorGroup = AnchorGroup()
-            more.tag_name = "更多"
-            groups?.append(more)
-            
-            // 监测到有数据传递过来,重新刷新表格
+            // 监测到有数据传递过来,刷新表格
             collectionView.reloadData()
         }
     }
@@ -61,7 +53,7 @@ extension RecommandGameView: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kGameCellID, for: indexPath) as! CollectionGameCell
-        cell.group = groups![indexPath.item]
+        cell.baseGame = groups![indexPath.item]
         return cell
     }
     

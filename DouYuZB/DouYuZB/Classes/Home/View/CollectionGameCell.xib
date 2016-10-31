@@ -2,13 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionGameCell" customModule="DouYuZB" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionGameCell" customModule="DouYuZB" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -16,16 +15,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="魔兽世界" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfN-I6-oBY">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="PcW-s6-trf"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="13s-CO-D6C">
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="13s-CO-D6C" secondAttribute="height" multiplier="1:1" id="hak-9b-LKL"/>
+                            <constraint firstAttribute="height" constant="45" id="OnL-NV-zFM"/>
+                            <constraint firstAttribute="width" constant="45" id="tw5-kk-vDS"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -34,14 +31,22 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62E-li-xpS">
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.49562185402684567" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="9Pe-a1-9nz"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="vfN-I6-oBY" firstAttribute="top" secondItem="13s-CO-D6C" secondAttribute="bottom" constant="5" id="Mte-VM-ve3"/>
-                <constraint firstItem="13s-CO-D6C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="PCa-RG-fc9"/>
-                <constraint firstItem="13s-CO-D6C" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dVZ-TL-prM"/>
-                <constraint firstAttribute="bottom" secondItem="vfN-I6-oBY" secondAttribute="bottom" constant="10" id="ddW-sH-mg5"/>
-                <constraint firstItem="vfN-I6-oBY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zfo-up-jKc"/>
+                <constraint firstItem="vfN-I6-oBY" firstAttribute="centerX" secondItem="13s-CO-D6C" secondAttribute="centerX" id="6TF-NV-HMv"/>
+                <constraint firstAttribute="trailing" secondItem="62E-li-xpS" secondAttribute="trailing" id="DJl-1k-oZ2"/>
+                <constraint firstItem="13s-CO-D6C" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-8" id="LTJ-Xk-Uag"/>
+                <constraint firstItem="62E-li-xpS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RBg-bS-dvx"/>
+                <constraint firstItem="13s-CO-D6C" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="V0E-Ma-Brd"/>
+                <constraint firstAttribute="bottom" secondItem="62E-li-xpS" secondAttribute="bottom" constant="-1" id="YYG-W5-5Ml"/>
+                <constraint firstItem="vfN-I6-oBY" firstAttribute="top" secondItem="13s-CO-D6C" secondAttribute="bottom" constant="5" id="jGc-7h-fAT"/>
             </constraints>
             <size key="customSize" width="102" height="68"/>
             <connections>
