@@ -14,13 +14,15 @@ private let kItemW: CGFloat = (kScreenW - 3 * kItemMargin) / 2
 private let kNormalItemH: CGFloat = kItemW * 3 / 4
 private let kPrettyItemH: CGFloat = kItemW * 4 / 3
 private let kHeaderViewH: CGFloat = 50
+private let kCycleViewH: CGFloat = kScreenW * 3 / 8
+private let kGameViewH: CGFloat = 90
 
 fileprivate let kNormalCellID = "kNormalCellID"
 fileprivate let kPrettyCellID = "kPrettyCellID"
 fileprivate let kHeaderViewID = "kHeaderViewID"
 
 class RecommendViewController: UIViewController {
-    // MARK: - 懒加载属性
+    // MARK: 懒加载属性
     fileprivate lazy var recommendVM: RecommendViewModel = RecommendViewModel()
     fileprivate lazy var collectionView: UICollectionView = { [unowned self] in
         // 1.创建布局
@@ -47,7 +49,17 @@ class RecommendViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return collectionView
     }()
-    // MARK: - 系统回调函数
+    fileprivate lazy var cycleView: RecommandCycleView = {
+        let cycleView = RecommandCycleView.recommendCycleView()
+        cycleView.frame = CGRect(x: 0, y: -(kCycleViewH + kGameViewH), width: kScreenW, height: kCycleViewH)
+        return cycleView
+    }()
+    fileprivate lazy var gameView: RecommandGameView = {
+        let gameView = RecommandGameView.recommandGameView()
+        gameView.frame = CGRect(x: 0, y: -kGameViewH, width: kScreenW, height: kGameViewH)
+        return gameView
+    }()
+    // MARK: 系统回调函数
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -63,14 +75,29 @@ extension RecommendViewController {
     fileprivate func setupUI() {
         // 1.添加UICollectionView
         view.addSubview(collectionView)
+        // 2.将cycleView添加到collectionView中
+        collectionView.addSubview(cycleView)
+        // 3.设置collectionView的内边距
+        collectionView.contentInset = UIEdgeInsets(top: kCycleViewH + kGameViewH, left: 0, bottom: 0, right: 0)
+        // 4.将gameView添加到collectionView中
+        collectionView.addSubview(gameView)
     }
 }
 
 // MARK: - 请求数据
 extension RecommendViewController {
     fileprivate func loadData() {
+        // 1.请求推荐数据
         recommendVM.requestData {
+            // 1.展示推荐数据
             self.collectionView.reloadData()
+            // 2.将数据传递给gameView
+            self.gameView.groups = self.recommendVM.anchorGroups
+        }
+        // 2.请求轮播数据
+        recommendVM.requestCycleData { 
+            // 数据请求完成,将数据传递给cycleView
+            self.cycleView.cycleModels = self.recommendVM.cycleModels
         }
     }
 }

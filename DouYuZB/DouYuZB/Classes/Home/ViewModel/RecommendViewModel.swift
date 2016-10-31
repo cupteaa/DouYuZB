@@ -11,11 +11,13 @@ import UIKit
 class RecommendViewModel {
     // MARK: - 懒加载属性
     lazy var anchorGroups: [AnchorGroup] = [AnchorGroup]()
+    lazy var cycleModels: [CycleModel] = [CycleModel]()
     fileprivate lazy var bigDataGroup: AnchorGroup = AnchorGroup()
     fileprivate lazy var prettyGroup: AnchorGroup = AnchorGroup()
 }
 // MARK: - 发送网络请求
 extension RecommendViewModel {
+    // MARK: 请求推荐数据
     func requestData(finishedCallback: @escaping () -> ()) {
         // 1.定义参数
         let parameters = ["limit" : "4", "offset" : "0", "tiem" : NSDate.getCurrentTime()]
@@ -81,6 +83,23 @@ extension RecommendViewModel {
         dGroup.notify(queue: DispatchQueue.main) { 
             self.anchorGroups.insert(self.prettyGroup, at: 0)
             self.anchorGroups.insert(self.bigDataGroup, at: 0)
+            finishedCallback()
+        }
+    }
+    
+    // MARK: 请求无限轮播数据
+    func requestCycleData(finishedCallback: @escaping () -> ()) {
+        NetWorkTools.requestData(.GET, URLString: "http://www.douyutv.com/api/v1/slide/6", parameters: ["version" : "2.300"]) { (result) in
+            // 1.将result转成字典类型
+            guard let resultDict = result as? [String : Any] else { return }
+            // 2.根据data这个key,获取数组,这个数组里存放的是字典
+            guard let dataArray = resultDict["data"] as? [[String : Any]] else { return }
+            // 3.遍历数组,获取字典,并且将字典转成模型对象
+            for dict in dataArray {
+                let cycle = CycleModel(dict: dict)
+                self.cycleModels.append(cycle)
+            }
+            // 通知外界数据请求完成,刷新数据
             finishedCallback()
         }
     }
